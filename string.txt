@@ -1,0 +1,36 @@
+
+class String{
+
+	char *str;
+
+public:
+	String(const char *s = "")
+	{
+		str = new char[s?strlen(s)+1:1];
+		strcpy(str,s?s:"");
+	}
+	String(const String& s)//:str(strcpy(new char[strlen(s.str)+1],s.str))
+	{
+		str = new char[s.str?strlen(s.str)+1:1];
+		strcpy(str,s.str);
+	}
+	String& operator=(const String& s){
+		if(&s != this){
+			string tmp(s);
+			swap(tmp.str,str);
+		}	
+		return *this;
+	}
+	~String(void){
+		if(str != NULL){
+			delete[] str;
+			str = NULL;
+		}	
+	}
+};
+
+void swap(string &a,string &b){
+	string c=a;
+	a.str=b.str;
+	b.str=c.str;
+}
