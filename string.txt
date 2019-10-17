@@ -1,8 +1,6 @@
 
 class String{
-
 	char *str;
-
 public:
 	String(const char *s = "")
 	{
